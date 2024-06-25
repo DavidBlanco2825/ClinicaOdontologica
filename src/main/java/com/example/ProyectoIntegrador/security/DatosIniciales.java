@@ -18,12 +18,33 @@ public class DatosIniciales implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        String passSinCifrar = "admin";
-        String passCifrado = passwordEncoder.encode(passSinCifrar);
-        Usuario usuario = new Usuario("jorgito", UsuarioRole.ROLE_USER, passCifrado, "admin@admin.com", "jpereyradh");
-        Usuario usuario2 = new Usuario("Avril", UsuarioRole.ROLE_ADMIN, passCifrado, "avril@admin.com", "Avril");
-        System.out.println("pass cifrado: " + passCifrado);
-        usuarioRepository.save(usuario);
-        usuarioRepository.save(usuario2);
+
+        Usuario basicUser = new Usuario(
+                "Avril Tihista",
+                UsuarioRole.ROLE_USER,
+                passwordEncoder.encode("user"),
+                "avril@admin.com",
+                "avril_tihista"
+        );
+
+        Usuario adminUser = new Usuario(
+                "David Blanco",
+                UsuarioRole.ROLE_ADMIN,
+                passwordEncoder.encode("admin"),
+                "david@admin.com",
+                "david_blanco"
+        );
+
+        Usuario adminUser2 = new Usuario(
+                "Victor Falconi",
+                UsuarioRole.ROLE_ADMIN,
+                passwordEncoder.encode("admin"),
+                "victor@admin.com",
+                "victor_falconi"
+        );
+
+        usuarioRepository.save(basicUser);
+        usuarioRepository.save(adminUser);
+        usuarioRepository.save(adminUser2);
     }
 }
