@@ -21,27 +21,27 @@ window.addEventListener('load', function () {
             },
             body: JSON.stringify(formData)
         }
-          fetch(url,settings)
-          .then(response => response.json())
+        fetch(url, settings)
+            .then(response => response.json())
 
     })
- })
+})
 
-    function findBy(id) {
-          const url = '/odontologos'+"/"+id;
-          const settings = {
-              method: 'GET'
-          }
-          fetch(url,settings)
-          .then(response => response.json())
-          .then(data => {
-              let odontologo = data;
-              document.querySelector('#odontologo_id').value = odontologo.id;
-              document.querySelector('#matricula').value = odontologo.matricula;
-              document.querySelector('#nombre').value = odontologo.nombre;
-              document.querySelector('#apellido').value = odontologo.apellido;
-              document.querySelector('#div_odontologo_updating').style.display = "block";
-          }).catch(error => {
-              alert("Error: " + error);
-          })
-      }
+function findBy(id) {
+    const url = '/odontologos' + "/" + id;
+    const settings = {
+        method: 'GET'
+    }
+    fetch(url, settings)
+        .then(response => response.json())
+        .then(data => {
+            let odontologo = data;
+            document.querySelector('#odontologo_id').value = odontologo.id;
+            document.querySelector('#matricula').value = odontologo.matricula;
+            document.querySelector('#nombre').value = odontologo.nombre;
+            document.querySelector('#apellido').value = odontologo.apellido;
+            document.querySelector('#div_odontologo_updating').style.display = "block";
+        }).catch(error => {
+            alert("Error: " + error);
+        })
+}

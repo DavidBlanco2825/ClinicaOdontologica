@@ -6,10 +6,10 @@ window.addEventListener('load', function () {
         const formData = {
             id: document.querySelector('#turno_id').value,
             paciente: {
-                        id: document.querySelector('#paciente').value
+                id: document.querySelector('#paciente').value
             },
             odontologo: {
-                        id: document.querySelector('#odontologo').value
+                id: document.querySelector('#odontologo').value
             },
             fechaHora: document.querySelector('#fecha').value
 
@@ -23,69 +23,69 @@ window.addEventListener('load', function () {
             },
             body: JSON.stringify(formData)
         }
-          fetch(url,settings)
-          .then(response => response.json())
+        fetch(url, settings)
+            .then(response => response.json())
 
     })
- })
+})
 
-    function findBy(id) {
+function findBy(id) {
 
-            // Obtener lista de todos los odontólogos
-          const urlOdontologos = '/odontologos';
+    // Obtener lista de todos los odontólogos
+    const urlOdontologos = '/odontologos';
 
-          fetch(urlOdontologos)
-              .then(response => response.json())
-              .then(odontologos => {
-                  let odontologoSelect = document.querySelector('#odontologo');
-                  odontologoSelect.innerHTML = '';
-                  odontologos.forEach(odontologo => {
-                      let option = document.createElement('option');
-                      option.value = odontologo.id;
-                      option.textContent = `${odontologo.nombre} ${odontologo.apellido} (Matrícula: ${odontologo.matricula})`;
-                      odontologoSelect.appendChild(option);
-                  });
-              })
-              .then(() => {
-              // Obtener lista de todos los pacientes
-                        const urlPacientes = '/paciente';
-                fetch(urlPacientes)
-                              .then(response => response.json())
-                              .then(pacientes => {
-                                  let pacienteSelect = document.querySelector('#paciente');
-                                  pacienteSelect.innerHTML = '';
-                                  pacientes.forEach(paciente => {
-                                      let option = document.createElement('option');
-                                      option.value = paciente.id;
-                                      option.textContent = `${paciente.nombre} ${paciente.apellido} (Cédula: ${paciente.cedula})`;
-                                      pacienteSelect.appendChild(option);
-                                  });
-                              })
-                              .then(() => {
-                                    const url = '/turnos/' +id;
-                                              const settings = {
-                                                  method: 'GET'
-                                              }
-                                              fetch(url,settings)
-                                              .then(response => response.json())
-                                              .then(data => {
-                                                  let turno = data;
-                                                  document.querySelector('#turno_id').value = turno.id || '';
-                                                              document.querySelector('#odontologo').value = turno.odontologo.id || '',
-                                                              document.querySelector('#paciente').value = turno.paciente.id || '',
-                                                              document.querySelector('#fecha').value = turno.fechaHora || '';
-                                                              // Mostrar el formulario de actualización
-                                                              document.querySelector('#div_turno_updating').style.display = "block";
-                                              }).catch(error => {
-                                                  alert("Error: " + error);
-                                              })
-                              })
-                              .catch(error => {
-                                  console.error("Error obteniendo lista de pacientes:", error);
-                              });
-              })
-              .catch(error => {
-                  console.error("Error obteniendo lista de odontólogos:", error);
-              });
+    fetch(urlOdontologos)
+        .then(response => response.json())
+        .then(odontologos => {
+            let odontologoSelect = document.querySelector('#odontologo');
+            odontologoSelect.innerHTML = '';
+            odontologos.forEach(odontologo => {
+                let option = document.createElement('option');
+                option.value = odontologo.id;
+                option.textContent = `${odontologo.nombre} ${odontologo.apellido} (Matrícula: ${odontologo.matricula})`;
+                odontologoSelect.appendChild(option);
+            });
+        })
+        .then(() => {
+            // Obtener lista de todos los pacientes
+            const urlPacientes = '/paciente';
+            fetch(urlPacientes)
+                .then(response => response.json())
+                .then(pacientes => {
+                    let pacienteSelect = document.querySelector('#paciente');
+                    pacienteSelect.innerHTML = '';
+                    pacientes.forEach(paciente => {
+                        let option = document.createElement('option');
+                        option.value = paciente.id;
+                        option.textContent = `${paciente.nombre} ${paciente.apellido} (Cédula: ${paciente.cedula})`;
+                        pacienteSelect.appendChild(option);
+                    });
+                })
+                .then(() => {
+                    const url = '/turnos/' + id;
+                    const settings = {
+                        method: 'GET'
+                    }
+                    fetch(url, settings)
+                        .then(response => response.json())
+                        .then(data => {
+                            let turno = data;
+                            document.querySelector('#turno_id').value = turno.id || '';
+                            document.querySelector('#odontologo').value = turno.odontologo.id || '',
+                                document.querySelector('#paciente').value = turno.paciente.id || '',
+                                document.querySelector('#fecha').value = turno.fechaHora || '';
+                            // Mostrar el formulario de actualización
+                            document.querySelector('#div_turno_updating').style.display = "block";
+                        }).catch(error => {
+                            alert("Error: " + error);
+                        })
+                })
+                .catch(error => {
+                    console.error("Error obteniendo lista de pacientes:", error);
+                });
+        })
+        .catch(error => {
+            console.error("Error obteniendo lista de odontólogos:", error);
+        });
 
-      }
+}
