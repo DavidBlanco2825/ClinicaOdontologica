@@ -10,6 +10,7 @@ import lombok.*;
 @Entity
 @Table(name = "odontologos")
 public class Odontologo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

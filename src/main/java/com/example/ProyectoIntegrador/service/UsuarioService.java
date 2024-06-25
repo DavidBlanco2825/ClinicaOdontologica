@@ -12,8 +12,10 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService implements UserDetailsService {
+
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     //aca deberia venir la autenticacion
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -23,9 +25,5 @@ public class UsuarioService implements UserDetailsService {
         } else {
             throw new UsernameNotFoundException("No existe el usuario: " + username);
         }
-
     }
-
-
-
 }

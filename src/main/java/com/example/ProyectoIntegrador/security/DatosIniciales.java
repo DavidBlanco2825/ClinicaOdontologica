@@ -11,8 +11,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DatosIniciales implements ApplicationRunner {
+
     @Autowired
     private UsuarioRepository usuarioRepository;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
