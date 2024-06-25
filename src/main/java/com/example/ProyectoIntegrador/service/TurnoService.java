@@ -2,17 +2,17 @@ package com.example.ProyectoIntegrador.service;
 
 import com.example.ProyectoIntegrador.entity.Turno;
 import com.example.ProyectoIntegrador.repository.TurnoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class TurnoService {
 
-    @Autowired
-    private TurnoRepository turnoRepository;
+    private final TurnoRepository turnoRepository;
 
     public Turno guardarTurno(Turno turno) {
         return turnoRepository.save(turno);

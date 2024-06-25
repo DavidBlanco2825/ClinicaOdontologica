@@ -3,20 +3,18 @@ package com.example.ProyectoIntegrador.security;
 import com.example.ProyectoIntegrador.entity.Usuario;
 import com.example.ProyectoIntegrador.entity.UsuarioRole;
 import com.example.ProyectoIntegrador.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class DatosIniciales implements ApplicationRunner {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final UsuarioRepository usuarioRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public void run(ApplicationArguments args) {

@@ -1,7 +1,7 @@
 package com.example.ProyectoIntegrador.security;
 
 import com.example.ProyectoIntegrador.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,16 +15,12 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class ConfigWebSecurity {
 
-    @Autowired
-    private UsuarioService usuarioService;
-
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
-    private CustomAccessDeniedHandler customAccessDeniedHandler;
+    private final UsuarioService usuarioService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {

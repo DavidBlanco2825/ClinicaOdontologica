@@ -2,17 +2,17 @@ package com.example.ProyectoIntegrador.service;
 
 import com.example.ProyectoIntegrador.entity.Odontologo;
 import com.example.ProyectoIntegrador.repository.OdontologoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class OdontologoService {
 
-    @Autowired
-    private OdontologoRepository odontologoRepository;
+    private final OdontologoRepository odontologoRepository;
 
     public Odontologo guardarOdontologo(Odontologo odontologo) {
         return odontologoRepository.save(odontologo);
