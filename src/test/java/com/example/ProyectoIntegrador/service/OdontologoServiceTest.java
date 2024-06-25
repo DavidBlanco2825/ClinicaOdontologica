@@ -19,8 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class OdontologoServiceTest {
 
+    private final OdontologoService odontologoService;
+
     @Autowired
-    private OdontologoService odontologoService;
+    public OdontologoServiceTest(OdontologoService odontologoService) {
+        this.odontologoService = odontologoService;
+    }
 
     @Test
     @Order(1)
@@ -42,9 +46,9 @@ public class OdontologoServiceTest {
     @Order(3)
     public void actualizarOdontologoTest() {
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(1L);
-        if (odontologoBuscado.isPresent()) {
-            odontologoBuscado.get().setApellido("Perez");
-        }
+        odontologoBuscado.ifPresent(
+                odontologo -> odontologo.setApellido("Perez")
+        );
         odontologoService.actualizar(odontologoBuscado.get());
         assertEquals("Perez", odontologoBuscado.get().getApellido());
     }
@@ -53,14 +57,14 @@ public class OdontologoServiceTest {
     @Order(4)
     public void buscarTodos() {
         List<Odontologo> odontologos = odontologoService.buscarTodos();
-        assertEquals(3, odontologos.size());
+        assertEquals(4, odontologos.size());
     }
 
     @Test
     @Order(5)
     public void eliminarOdontologo() {
-        odontologoService.eliminarOdontologo(1L);
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(1L);
+        odontologoService.eliminarOdontologo(4L);
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(4L);
         assertFalse(odontologoBuscado.isPresent());
     }
 }

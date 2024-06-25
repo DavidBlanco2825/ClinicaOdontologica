@@ -18,18 +18,23 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PacienteServiceTest {
 
+    private final PacienteService pacienteService;
+
     @Autowired
-    private PacienteService pacienteService;
+    public PacienteServiceTest(PacienteService pacienteService) {
+        this.pacienteService = pacienteService;
+    }
 
     @Test
     @Order(1)
     public void guardarPaciente() {
         Paciente paciente = new Paciente("Jorgito", "Pereyra", "111111", LocalDate.of(2024, 6, 19), new Domicilio("Calle falsa", 123, "La Rioja", "Argentina"), "jorgito@digitalhouse.com");
         Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-        assertEquals(1L, pacienteGuardado.getId());
+        assertEquals(4L, pacienteGuardado.getId());
     }
 
     @Test
@@ -44,9 +49,9 @@ public class PacienteServiceTest {
     @Order(3)
     public void actualizarPacienteTest() {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(1L);
-        if (pacienteBuscado.isPresent()) {
-            pacienteBuscado.get().setApellido("Perez");
-        }
+        pacienteBuscado.ifPresent(
+                paciente -> paciente.setApellido("Perez")
+        );
         pacienteService.actualizarPaciente(pacienteBuscado.get());
         assertEquals("Perez", pacienteBuscado.get().getApellido());
     }
@@ -55,14 +60,14 @@ public class PacienteServiceTest {
     @Order(4)
     public void buscarTodos() {
         List<Paciente> pacientes = pacienteService.buscarTodos();
-        assertEquals(1, pacientes.size());
+        assertEquals(4, pacientes.size());
     }
 
     @Test
     @Order(5)
     public void eliminarPaciente() {
-        pacienteService.eliminarPaciente(1L);
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(1L);
+        pacienteService.eliminarPaciente(4L);
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(4L);
         assertFalse(pacienteBuscado.isPresent());
     }
 }
