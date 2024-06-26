@@ -19,17 +19,17 @@ El proyecto consiste en un sistema de reserva de turnos para una clínica odonto
 
 #### En Windows:
 ```sh
-docker compose -f docker-compose.yml up --build -d 
+docker compose -f docker-compose.yml up --build -d
 ```
 
 #### En Linux:
 ```sh
-sudo docker compose -f docker-compose.yml up --build -d 
+sudo docker compose -f docker-compose.yml up --build -d
 ```
 
 #### En Mac:
 ```sh
-docker compose -f docker-compose.yml up --build -d 
+docker compose -f docker-compose.yml up --build -d
 ```
 
 ## Acceso a la Documentación
