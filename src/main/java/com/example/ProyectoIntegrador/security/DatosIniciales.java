@@ -23,7 +23,7 @@ public class DatosIniciales implements ApplicationRunner {
                 "Avril Tihista",
                 UsuarioRole.ROLE_USER,
                 passwordEncoder.encode("user"),
-                "avril@admin.com",
+                "avril@user.com",
                 "avril_tihista"
         );
 

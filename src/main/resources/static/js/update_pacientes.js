@@ -21,7 +21,7 @@ window.addEventListener('load', function () {
 
         };
 
-        const url = '/paciente';
+        const url = '/pacientes';
         const settings = {
             method: 'PUT',
             headers: {
@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
 })
 
 function findBy(id) {
-    const url = '/paciente/buscar/' + id;
+    const url = '/pacientes/' + id;
     const settings = {
         method: 'GET'
     }

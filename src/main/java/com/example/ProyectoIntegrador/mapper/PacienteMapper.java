@@ -4,7 +4,7 @@ import com.example.ProyectoIntegrador.dto.PacienteDto;
 import com.example.ProyectoIntegrador.entity.Paciente;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {DomicilioMapper.class})
 public interface PacienteMapper {
     PacienteDto toDto(Paciente paciente);
     Paciente toEntity(PacienteDto pacienteDto);

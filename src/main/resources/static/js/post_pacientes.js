@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
             email: document.querySelector('#email').value
         };
 
-        const url = '/paciente';
+        const url = '/pacientes';
         const settings = {
             method: 'POST',
             headers: {

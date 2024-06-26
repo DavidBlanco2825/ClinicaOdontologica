@@ -1,6 +1,6 @@
 package com.example.ProyectoIntegrador.service;
 
-import com.example.ProyectoIntegrador.entity.Odontologo;
+import com.example.ProyectoIntegrador.dto.OdontologoDto;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -29,8 +29,8 @@ public class OdontologoServiceTest {
     @Test
     @Order(1)
     public void guardarOdontologo() {
-        Odontologo odontologo = new Odontologo("A123", "David", "Blanco");
-        Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+        OdontologoDto odontologo = new OdontologoDto("A123", "David", "Blanco");
+        OdontologoDto odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
         assertEquals(4L, odontologoGuardado.getId());
     }
 
@@ -38,25 +38,25 @@ public class OdontologoServiceTest {
     @Order(2)
     public void buscarOdontologoPorId() {
         Long id = 1L;
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(id);
+        Optional<OdontologoDto> odontologoBuscado = odontologoService.buscarOdontologo(id);
         assertNotNull(odontologoBuscado.get());
     }
 
     @Test
     @Order(3)
     public void actualizarOdontologoTest() {
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(1L);
+        Optional<OdontologoDto> odontologoBuscado = odontologoService.buscarOdontologo(1L);
         odontologoBuscado.ifPresent(
                 odontologo -> odontologo.setApellido("Perez")
         );
-        odontologoService.actualizar(odontologoBuscado.get());
+        odontologoService.actualizarOdontologo(odontologoBuscado.get());
         assertEquals("Perez", odontologoBuscado.get().getApellido());
     }
 
     @Test
     @Order(4)
     public void buscarTodos() {
-        List<Odontologo> odontologos = odontologoService.buscarTodos();
+        List<OdontologoDto> odontologos = odontologoService.buscarTodos();
         assertEquals(4, odontologos.size());
     }
 
@@ -64,7 +64,7 @@ public class OdontologoServiceTest {
     @Order(5)
     public void eliminarOdontologo() {
         odontologoService.eliminarOdontologo(4L);
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(4L);
+        Optional<OdontologoDto> odontologoBuscado = odontologoService.buscarOdontologo(4L);
         assertFalse(odontologoBuscado.isPresent());
     }
 }

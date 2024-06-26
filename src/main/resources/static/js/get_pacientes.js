@@ -3,11 +3,11 @@ window.addEventListener('load', function () {
 
     //con fetch invocamos a la API de pacientes con el método GET
     //nos devolverá un JSON con una colección de pacientes
-    const url = '/paciente';
+    const url = '/pacientes';
     const settings = {
       method: 'GET'
     }
-
+    
     fetch(url, settings)
       .then(response => response.json())
       .then(data => {

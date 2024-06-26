@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegrador.dto;
 
+import com.example.ProyectoIntegrador.entity.Domicilio;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,13 @@ public class PacienteDto {
     private LocalDate fechaIngreso;
     private DomicilioDto domicilio;
     private String email;
+
+    public PacienteDto(String nombre, String apellido, String cedula, LocalDate fechaIngreso, DomicilioDto domicilio, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.fechaIngreso = fechaIngreso;
+        this.domicilio = domicilio;
+        this.email = email;
+    }
 }

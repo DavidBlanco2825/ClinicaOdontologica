@@ -36,7 +36,7 @@ public class IntegracionOdontologosTest {
 
         MvcResult respuesta = mockMvc.perform(MockMvcRequestBuilders.post("/odontologos").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(payloadJson))
                 .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
         assertFalse(respuesta.getResponse().getContentAsString().isEmpty());

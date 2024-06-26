@@ -1,5 +1,7 @@
 package com.example.ProyectoIntegrador.service;
 
+import com.example.ProyectoIntegrador.dto.DomicilioDto;
+import com.example.ProyectoIntegrador.dto.PacienteDto;
 import com.example.ProyectoIntegrador.entity.Domicilio;
 import com.example.ProyectoIntegrador.entity.Paciente;
 import org.junit.jupiter.api.MethodOrderer;
@@ -32,8 +34,15 @@ public class PacienteServiceTest {
     @Test
     @Order(1)
     public void guardarPaciente() {
-        Paciente paciente = new Paciente("Jorgito", "Pereyra", "111111", LocalDate.of(2024, 6, 19), new Domicilio("Calle falsa", 123, "La Rioja", "Argentina"), "jorgito@digitalhouse.com");
-        Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
+        PacienteDto paciente = new PacienteDto(
+                "Jorgito",
+                "Pereyra",
+                "111111",
+                LocalDate.of(2024, 6, 19),
+                new DomicilioDto("Calle falsa", 123, "La Rioja", "Argentina"),
+                "jorgito@digitalhouse.com"
+        );
+        PacienteDto pacienteGuardado = pacienteService.guardarPaciente(paciente);
         assertEquals(4L, pacienteGuardado.getId());
     }
 
@@ -41,14 +50,14 @@ public class PacienteServiceTest {
     @Order(2)
     public void buscarPacientePorId() {
         Long id = 1L;
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(id);
+        Optional<PacienteDto> pacienteBuscado = pacienteService.buscarPaciente(id);
         assertNotNull(pacienteBuscado.get());
     }
 
     @Test
     @Order(3)
     public void actualizarPacienteTest() {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(1L);
+        Optional<PacienteDto> pacienteBuscado = pacienteService.buscarPaciente(1L);
         pacienteBuscado.ifPresent(
                 paciente -> paciente.setApellido("Perez")
         );
@@ -59,7 +68,7 @@ public class PacienteServiceTest {
     @Test
     @Order(4)
     public void buscarTodos() {
-        List<Paciente> pacientes = pacienteService.buscarTodos();
+        List<PacienteDto> pacientes = pacienteService.buscarTodos();
         assertEquals(4, pacientes.size());
     }
 
@@ -67,7 +76,7 @@ public class PacienteServiceTest {
     @Order(5)
     public void eliminarPaciente() {
         pacienteService.eliminarPaciente(4L);
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(4L);
+        Optional<PacienteDto> pacienteBuscado = pacienteService.buscarPaciente(4L);
         assertFalse(pacienteBuscado.isPresent());
     }
 }

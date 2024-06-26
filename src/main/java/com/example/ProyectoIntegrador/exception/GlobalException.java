@@ -15,6 +15,11 @@ public class GlobalException {
 
     @ExceptionHandler({BadRequestException.class})
     public ResponseEntity<String> tratamientoBadRequestExcetion(BadRequestException bre) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("mensaje: " + bre.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("mensaje: " + bre.getMessage());
+    }
+
+    @ExceptionHandler({DataAlreadyExistsException.class})
+    public ResponseEntity<String> handleDataAlreadyExistsException(DataAlreadyExistsException exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("mensaje: " + exception.getMessage());
     }
 }

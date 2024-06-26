@@ -5,12 +5,8 @@ window.addEventListener('load', function () {
     formulario.addEventListener('submit', function (event) {
         const formData = {
             id: document.querySelector('#turno_id').value,
-            paciente: {
-                id: document.querySelector('#paciente').value
-            },
-            odontologo: {
-                id: document.querySelector('#odontologo').value
-            },
+            pacienteId: document.querySelector('#paciente').value,
+            odontologoId:document.querySelector('#odontologo').value,
             fechaHora: document.querySelector('#fecha').value
 
         };
@@ -48,7 +44,7 @@ function findBy(id) {
         })
         .then(() => {
             // Obtener lista de todos los pacientes
-            const urlPacientes = '/paciente';
+            const urlPacientes = '/pacientes';
             fetch(urlPacientes)
                 .then(response => response.json())
                 .then(pacientes => {
@@ -71,9 +67,9 @@ function findBy(id) {
                         .then(data => {
                             let turno = data;
                             document.querySelector('#turno_id').value = turno.id || '';
-                            document.querySelector('#odontologo').value = turno.odontologo.id || '',
-                                document.querySelector('#paciente').value = turno.paciente.id || '',
-                                document.querySelector('#fecha').value = turno.fechaHora || '';
+                            document.querySelector('#odontologo').value = turno.odontologoId || '',
+                            document.querySelector('#paciente').value = turno.pacienteId || '',
+                            document.querySelector('#fecha').value = turno.fechaHora || '';
                             // Mostrar el formulario de actualización
                             document.querySelector('#div_turno_updating').style.display = "block";
                         }).catch(error => {

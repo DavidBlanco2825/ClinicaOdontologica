@@ -16,7 +16,7 @@ window.addEventListener('load', function () {
             console.error('Error fetching odontologos:', error);
         });
 
-    fetch('/paciente')
+    fetch('/pacientes')
         .then(response => response.json())
         .then(data => {
             const pacienteSelect = document.querySelector('#paciente');
@@ -34,12 +34,8 @@ window.addEventListener('load', function () {
     formulario.addEventListener('submit', function (event) {
         event.preventDefault();
         const formData = {
-            paciente: {
-                id: document.querySelector('#paciente').value
-            },
-            odontologo: {
-                id: document.querySelector('#odontologo').value
-            },
+            pacienteId: document.querySelector('#paciente').value,
+            odontologoId: document.querySelector('#odontologo').value,
             fechaHora: document.querySelector('#fecha').value
         };
 
@@ -53,7 +49,7 @@ window.addEventListener('load', function () {
         }
 
         fetch(url, settings)
-            //.then(response => response.json())
+            .then(response => response.json())
             .then(data => {
                 let successAlert = '<div class="alert alert-success alert-dismissible">' +
                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
@@ -73,7 +69,6 @@ window.addEventListener('load', function () {
                 resetUploadForm();
             })
     });
-
 
     function resetUploadForm() {
         document.querySelector('#paciente').value = "";

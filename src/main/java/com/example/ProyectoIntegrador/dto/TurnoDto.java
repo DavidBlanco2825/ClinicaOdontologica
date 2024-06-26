@@ -13,7 +13,13 @@ import java.time.LocalDate;
 @Setter
 public class TurnoDto {
     private Long id;
-    private PacienteDto paciente;
-    private OdontologoDto odontologo;
+    private Long pacienteId;
+    private Long odontologoId;
     private LocalDate fechaHora;
+
+    public TurnoDto(Long pacienteId, Long odontologoId, LocalDate fechaHora) {
+        this.pacienteId = pacienteId;
+        this.odontologoId = odontologoId;
+        this.fechaHora = fechaHora;
+    }
 }

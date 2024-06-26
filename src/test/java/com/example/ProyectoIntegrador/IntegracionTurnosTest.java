@@ -1,5 +1,9 @@
 package com.example.ProyectoIntegrador;
 
+import com.example.ProyectoIntegrador.dto.DomicilioDto;
+import com.example.ProyectoIntegrador.dto.OdontologoDto;
+import com.example.ProyectoIntegrador.dto.PacienteDto;
+import com.example.ProyectoIntegrador.dto.TurnoDto;
 import com.example.ProyectoIntegrador.entity.Domicilio;
 import com.example.ProyectoIntegrador.entity.Odontologo;
 import com.example.ProyectoIntegrador.entity.Paciente;
@@ -36,10 +40,12 @@ public class IntegracionTurnosTest {
     private MockMvc mockMvc;
 
     public void cargarDatos() {
-        Paciente pacienteGuardado = pacienteService.guardarPaciente(new Paciente("Jorgito", "Pereyra", "111111", LocalDate.of(2024, 6, 19), new Domicilio("Calle falsa", 123, "La Rioja", "Argentina"), "jorgito@digitalhouse.com"));
-        Odontologo odontologoGuardado = odontologoService.guardarOdontologo(new Odontologo("MP10", "Ivan", "Bustamante"));
-        Turno turnoGuardado = turnoService.guardarTurno(new Turno(pacienteGuardado, odontologoGuardado, LocalDate.of(2024, 6, 19)));
-
+        PacienteDto pacienteGuardado = pacienteService.guardarPaciente(
+                new PacienteDto("Jorgito", "Pereyra", "111111", LocalDate.of(2024, 6, 19),
+                        new DomicilioDto("Calle falsa", 123, "La Rioja", "Argentina"),
+                        "jorgito@digitalhouse.com"));
+        OdontologoDto odontologoGuardado = odontologoService.guardarOdontologo(new OdontologoDto("MP10", "Ivan", "Bustamante"));
+        TurnoDto turnoGuardado = turnoService.guardarTurno(new TurnoDto(pacienteGuardado.getId(), odontologoGuardado.getId(), LocalDate.of(2024, 6, 19)));
     }
 
     @Test
