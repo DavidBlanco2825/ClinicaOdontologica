@@ -1,0 +1,9 @@
+services:
+  note-taking-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/home/app/src
+    ports:
+      - 8080:8080
