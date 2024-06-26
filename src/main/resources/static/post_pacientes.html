@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <title>Agregar Paciente</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/post_pacientes.js"></script>
     <script type="text/javascript" src="/js/logout.js"></script>
+    <link href="index.css" rel="stylesheet">
+    <link href="post_pages.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="./index.html">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,54 +53,53 @@
 
                     </ul>
                 </li>
-                <button type="button" onclick="logout()" class="btn btn-primary">Log out</button>
+                <button type="button" onclick="logout()" class="btn btn-secondary">Log out</button>
             </div>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-7" style="background-color:#e6fffa; padding:10px; border-radius:3px">
+    <div class="row justify-content-center">
+        <div class="col-sm-7 form-container">
             <h3>Agregar Paciente</h3>
             <form id="add_new_paciente">
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="nombre">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre" name="nombre" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="apellido">Apellido:</label>
                     <input type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido" name="apellido" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="cedula">Cédula:</label>
                     <input type="text" class="form-control" id="cedula" placeholder="Ingrese la cédula" name="cedula" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="fechaIngreso">Fecha de Ingreso:</label>
                     <input type="date" class="form-control" id="fechaIngreso" placeholder="Ingrese la fecha de ingreso" name="fechaIngreso" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="calle">Calle:</label>
                     <input type="text" class="form-control" id="calle" placeholder="Ingrese la calle" name="calle" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="numero">Número:</label>
                     <input type="text" class="form-control" id="numero" placeholder="Ingrese el número" name="numero" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="localidad">Localidad:</label>
                     <input type="text" class="form-control" id="localidad" placeholder="Ingrese la localidad" name="localidad" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="provincia">Provincia:</label>
                     <input type="text" class="form-control" id="provincia" placeholder="Ingrese la provincia" name="provincia" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label class="control-label" for="email">Email:</label>
                     <input type="email" class="form-control" id="email" placeholder="Ingrese el email" name="email" required>
                 </div>
-                <button type="submit" class="btn btn-danger"
-                        id="btn-add-new-paciente">Guardar</button>
+                <button type="submit" class="btn btn-danger" id="btn-add-new-paciente">Guardar</button>
             </form>
             <div id="response" style="display:none; margin-top:10px">
             </div>
