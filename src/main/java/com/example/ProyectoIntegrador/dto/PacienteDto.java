@@ -1,10 +1,10 @@
 package com.example.ProyectoIntegrador.dto;
 
-import com.example.ProyectoIntegrador.entity.Domicilio;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class PacienteDto {
     private Long id;
     private String nombre;

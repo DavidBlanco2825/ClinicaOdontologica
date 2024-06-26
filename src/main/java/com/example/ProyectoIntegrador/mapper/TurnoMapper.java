@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegrador.mapper;
 
+import com.example.ProyectoIntegrador.config.constants.ExceptionMessages;
 import com.example.ProyectoIntegrador.dto.TurnoDto;
 import com.example.ProyectoIntegrador.entity.Odontologo;
 import com.example.ProyectoIntegrador.entity.Paciente;
@@ -28,13 +29,13 @@ public interface TurnoMapper {
     @Named("mapPacienteIdToPaciente")
     default Paciente mapPacienteIdToPaciente(Long pacienteId, @Context PacienteRepository pacienteRepository) {
         return pacienteRepository.findById(pacienteId)
-                .orElseThrow(() -> new ResourceNotFoundException("Paciente no encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException(ExceptionMessages.PACIENTE_NO_ENCONTRADO + pacienteId));
     }
 
     @Named("mapOdontologoIdToOdontologo")
     default Odontologo mapOdontologoIdToOdontologo(Long odontologoId, @Context OdontologoRepository odontologoRepository) {
         return odontologoRepository.findById(odontologoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Odontologo no encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException(ExceptionMessages.ODONTOLOGO_NO_ENCONTRADO + odontologoId));
     }
 
     @AfterMapping
