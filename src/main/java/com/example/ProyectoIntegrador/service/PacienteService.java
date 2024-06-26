@@ -67,7 +67,7 @@ public class PacienteService {
     }
 
     private void checkIfPacienteExists(Long id) {
-        if (buscarPaciente(id).isPresent()) {
+        if (buscarPaciente(id).isEmpty()) {
             throw new ResourceNotFoundException(ExceptionMessages.PACIENTE_NO_ENCONTRADO + id);
         }
     }

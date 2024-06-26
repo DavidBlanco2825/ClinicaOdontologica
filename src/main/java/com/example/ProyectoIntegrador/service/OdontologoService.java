@@ -67,7 +67,7 @@ public class OdontologoService {
     }
 
     private void checkIfOdontologoExists(Long id) {
-        if (buscarOdontologo(id).isPresent()) {
+        if (buscarOdontologo(id).isEmpty()) {
             throw new ResourceNotFoundException(ExceptionMessages.ODONTOLOGO_NO_ENCONTRADO + id);
         }
     }
