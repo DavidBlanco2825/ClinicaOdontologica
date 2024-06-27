@@ -1,5 +1,5 @@
 services:
-  note-taking-backend:
+  clinica-backend:
     build:
       context: .
       dockerfile: Dockerfile
